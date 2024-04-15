@@ -123,6 +123,15 @@ if(MSVC)
         $<$<COMPILE_LANGUAGE:C,CXX>:/wd4577> # 'noexcept' used with no exception handling mode specified.
         $<$<COMPILE_LANGUAGE:C,CXX>:/wd4996> # 'X' was declared deprecated.
     )
+
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang") # clang-cl
+        target_compile_options(crashpad_interface INTERFACE
+            $<$<COMPILE_LANGUAGE:C,CXX>:-Wno-missing-field-initializers> # missing field initializer
+            $<$<COMPILE_LANGUAGE:C,CXX>:-Wno-sign-compare> # comparison of integers of different signs
+            $<$<COMPILE_LANGUAGE:C,CXX>:-Wno-microsoft-cast> # implicit conversion between pointer-to-function and pointer-to-object
+        )
+    endif()
+
 elseif(MINGW)
     # redirect to wmain
     # FIXME: cmake 3.13 added target_link_options
