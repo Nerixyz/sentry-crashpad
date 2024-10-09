@@ -128,7 +128,6 @@ if(MSVC)
         $<$<AND:$<COMPILE_LANGUAGE:C,CXX>,$<C_COMPILER_ID:Clang>>:-Wno-unused-parameter> # same as /wd4100
         $<$<AND:$<COMPILE_LANGUAGE:C,CXX>,$<C_COMPILER_ID:Clang>>:-Wno-deprecated-declarations> # same as /wd4996
     )
-
 elseif(MINGW)
     # redirect to wmain
     # FIXME: cmake 3.13 added target_link_options
