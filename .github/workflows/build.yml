@@ -34,6 +34,9 @@ jobs:
             CXX: clang++
           - name: Windows (x64)
             platform: windows-latest
+          - name: Windows ClangCL (x64)
+            platform: windows-latest
+            CMAKE_DEFINES: -G Visual Studio 17 2022 -A x64 -T ClangCL
           - name: Windows (arm64)
             platform: windows-latest
             CMAKE_DEFINES: -DCMAKE_TOOLCHAIN_FILE=cmake/toolchains/win_arm64.cmake -A arm64
