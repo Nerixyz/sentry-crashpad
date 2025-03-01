@@ -82,7 +82,7 @@ jobs:
           [ "${{ matrix.CC }}" ] && export CC="${{ matrix.CC }}"
           [ "${{ matrix.CXX }}" ] && export CXX="${{ matrix.CXX }}"
           echo "CMAKE_DEFINES=${CMAKE_DEFINES}"
-          cmake -B cmake-build -D CRASHPAD_BUILD_TOOLS=On ${CMAKE_DEFINES}
+          cmake -B cmake-build -D CRASHPAD_BUILD_TOOLS=On "${CMAKE_DEFINES}"
           cmake --build cmake-build --parallel
 
       - name: Build crashpad with client-side stack traces
@@ -91,7 +91,7 @@ jobs:
           [ "${{ matrix.CC }}" ] && export CC="${{ matrix.CC }}"
           [ "${{ matrix.CXX }}" ] && export CXX="${{ matrix.CXX }}"
           echo "CMAKE_DEFINES=${CMAKE_DEFINES}"
-          cmake -B cmake-build-stacks -D CRASHPAD_ENABLE_STACKTRACE=ON ${CMAKE_DEFINES}
+          cmake -B cmake-build-stacks -D CRASHPAD_ENABLE_STACKTRACE=ON "${CMAKE_DEFINES}"
           cmake --build cmake-build-stacks --parallel
 
   build-ios:
