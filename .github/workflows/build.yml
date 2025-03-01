@@ -79,7 +79,6 @@ jobs:
       - name: Build crashpad
         shell: bash
         run: |
-          set -x
           [ "${{ matrix.CC }}" ] && export CC="${{ matrix.CC }}"
           [ "${{ matrix.CXX }}" ] && export CXX="${{ matrix.CXX }}"
           echo "CMAKE_DEFINES=${CMAKE_DEFINES}"
@@ -96,7 +95,7 @@ jobs:
           cmake --build cmake-build-stacks --parallel
 
   build-ios:
-    name: "iOS"
+    name: 'iOS'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
